@@ -86,19 +86,21 @@ export default function Portfolio() {
                   src={project.src}
                   alt={project.alt}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover transition-transform duration-500 md:group-hover:scale-110"
                   sizes={
                     index === 0 || index === 3
                       ? "(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 50vw"
                       : "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   }
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                  <p className="text-gold text-sm font-medium uppercase tracking-wider">
+                {/* Always-visible gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent md:from-dark/60 md:group-hover:from-dark/90 md:group-hover:via-dark/30 transition-all duration-300" />
+                {/* Always-visible text, enhanced on desktop hover */}
+                <div className="absolute bottom-0 left-0 right-0 p-5 transition-all duration-300">
+                  <p className="text-gold text-sm font-medium uppercase tracking-wider md:group-hover:text-base md:transition-all md:duration-300">
                     {project.type}
                   </p>
-                  <p className="text-white text-lg font-semibold">
+                  <p className="text-white text-lg font-semibold md:group-hover:text-xl md:transition-all md:duration-300">
                     {project.client}
                   </p>
                 </div>

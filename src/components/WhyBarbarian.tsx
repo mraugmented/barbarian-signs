@@ -104,7 +104,7 @@ export default function WhyBarbarian() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {reasons.map((reason, index) => (
             <FadeIn key={reason.title} delay={index * 0.1}>
-              <div className="flex gap-5 p-6">
+              <div className="flex gap-5 p-6 bg-dark-lighter border border-dark-border rounded-lg">
                 <div className="flex-shrink-0 text-gold">{reason.icon}</div>
                 <div>
                   <h3 className="text-xl font-semibold mb-2">

@@ -61,7 +61,7 @@ export default function Hero() {
         >
           <a
             href="#contact"
-            className="bg-gold hover:bg-gold-dark text-dark font-bold text-lg px-8 py-4 rounded transition-all duration-200 hover:shadow-lg hover:shadow-gold/20"
+            className="bg-gold hover:bg-gold-dark text-dark font-bold text-lg px-8 py-4 rounded-lg cursor-pointer transition-all duration-200 hover:shadow-lg hover:shadow-gold/20"
           >
             Get a Free Quote
           </a>

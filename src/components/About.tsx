@@ -27,7 +27,7 @@ export default function About() {
                 />
               </div>
               {/* Accent border */}
-              <div className="absolute -bottom-4 -right-4 w-full h-full border-2 border-gold/30 rounded-lg -z-10" />
+              <div className="hidden lg:block absolute -bottom-4 -right-4 w-full h-full border-2 border-gold/30 rounded-lg -z-10" />
             </div>
           </FadeIn>
 

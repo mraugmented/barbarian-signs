@@ -24,6 +24,11 @@ body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
 
+::selection {
+  background: rgba(245, 166, 35, 0.3);
+  color: #fff;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
