@@ -137,12 +137,14 @@ export default function Services() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeIn>
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              Our <span className="text-gold">Services</span>
+            <p className="text-gold text-sm font-semibold uppercase tracking-[0.2em] mb-3">
+              What We Do
+            </p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+              Complete Signage Solutions
             </h2>
-            <p className="text-muted max-w-2xl mx-auto text-lg">
-              From design to installation, we deliver complete signage solutions
-              tailored to your business needs.
+            <p className="text-muted max-w-xl mx-auto text-lg">
+              From design to installation, tailored to your business.
             </p>
           </div>
         </FadeIn>

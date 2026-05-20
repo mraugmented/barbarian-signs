@@ -34,7 +34,10 @@ export default function About() {
           {/* Text side */}
           <div>
             <FadeIn direction="right">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+              <p className="text-gold text-sm font-semibold uppercase tracking-[0.2em] mb-3">
+                About Us
+              </p>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
                 <span className="text-gold">40+ Years</span> of Craftsmanship
               </h2>
               <div className="space-y-4 text-off-white/80 leading-relaxed">

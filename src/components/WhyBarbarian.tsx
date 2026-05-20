@@ -91,12 +91,14 @@ export default function WhyBarbarian() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeIn>
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              Why <span className="text-gold">Barbarian Signs</span>
+            <p className="text-gold text-sm font-semibold uppercase tracking-[0.2em] mb-3">
+              The Difference
+            </p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+              Why Barbarian Signs
             </h2>
-            <p className="text-muted max-w-2xl mx-auto text-lg">
-              Four decades of experience means we know what works. Here&apos;s
-              what sets us apart.
+            <p className="text-muted max-w-xl mx-auto text-lg">
+              Four decades of experience means we know what works.
             </p>
           </div>
         </FadeIn>

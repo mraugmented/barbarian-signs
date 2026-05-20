@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Services from "@/components/Services";
 import Portfolio from "@/components/Portfolio";
+import Services from "@/components/Services";
 import About from "@/components/About";
 import WhyBarbarian from "@/components/WhyBarbarian";
 import Contact from "@/components/Contact";
@@ -12,8 +12,8 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
-      <Services />
       <Portfolio />
+      <Services />
       <About />
       <WhyBarbarian />
       <Contact />
