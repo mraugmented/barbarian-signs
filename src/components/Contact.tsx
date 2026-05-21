@@ -13,11 +13,38 @@ export default function Contact() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    // Form submission would be handled here
-    setSubmitted(true);
+    setSubmitting(true);
+    setError('');
+
+    try {
+      const res = await fetch('https://is-boring.com/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          site_id: 'barbarian-signs',
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || undefined,
+          business_name: formData.business || undefined,
+          message: formData.message,
+        }),
+      });
+
+      if (!res.ok) {
+        throw new Error('Failed to submit');
+      }
+
+      setSubmitted(true);
+    } catch {
+      setError('Something went wrong. Please try again or contact us directly.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -181,11 +208,15 @@ export default function Contact() {
                       placeholder="What type of sign are you looking for? Any specific dimensions, materials, or design ideas?"
                     />
                   </div>
+                  {error && (
+                    <p className="text-red-400 text-sm">{error}</p>
+                  )}
                   <button
                     type="submit"
-                    className="w-full sm:w-auto bg-gold hover:bg-gold-dark text-dark font-bold text-lg px-10 py-4 rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-gold/20 cursor-pointer"
+                    disabled={submitting}
+                    className="w-full sm:w-auto bg-gold hover:bg-gold-dark text-dark font-bold text-lg px-10 py-4 rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-gold/20 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Send Inquiry
+                    {submitting ? 'Sending...' : 'Send Inquiry'}
                   </button>
                 </motion.form>
               )}
