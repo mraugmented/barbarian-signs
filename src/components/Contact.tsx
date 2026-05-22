@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import FadeIn from "./FadeIn";
+import { siteConfig } from "@/config/site";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -22,11 +23,11 @@ export default function Contact() {
     setError('');
 
     try {
-      const res = await fetch('https://is-boring.com/api/leads', {
+      const res = await fetch(siteConfig.leadsEndpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          site_id: 'barbarian-signs',
+          site_id: siteConfig.siteId,
           name: formData.name,
           email: formData.email,
           phone: formData.phone || undefined,
@@ -41,7 +42,7 @@ export default function Contact() {
 
       setSubmitted(true);
     } catch {
-      setError('Something went wrong. Please try again or contact us directly.');
+      setError(siteConfig.contact.errorMessage);
     } finally {
       setSubmitting(false);
     }
@@ -53,13 +54,13 @@ export default function Contact() {
         <FadeIn>
           <div className="text-center mb-16">
             <p className="text-gold text-sm font-semibold uppercase tracking-[0.2em] mb-3">
-              Get Started
+              {siteConfig.contact.sectionLabel}
             </p>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-              Request a Free Quote
+              {siteConfig.contact.heading}
             </h2>
             <p className="text-muted max-w-xl mx-auto text-lg">
-              Tell us about your project. We&apos;ll get back to you within 24 hours.
+              {siteConfig.contact.subheading}
             </p>
           </div>
         </FadeIn>
@@ -100,7 +101,7 @@ export default function Contact() {
                     Thank you!
                   </h3>
                   <p className="text-muted text-lg">
-                    We&apos;ll get back to you within 24 hours.
+                    {siteConfig.contact.successMessage}
                   </p>
                 </motion.div>
               ) : (
@@ -232,7 +233,7 @@ export default function Contact() {
                 </h3>
                 <div className="space-y-4">
                   <a
-                    href="tel:+17252592130"
+                    href={siteConfig.phoneHref}
                     className="flex items-center gap-3 text-off-white hover:text-gold transition-colors group"
                   >
                     <div className="w-10 h-10 rounded-lg bg-dark border border-dark-border flex items-center justify-center group-hover:border-gold/50 transition-colors">
@@ -250,10 +251,10 @@ export default function Contact() {
                         />
                       </svg>
                     </div>
-                    <span className="font-medium">(725) 259-2130</span>
+                    <span className="font-medium">{siteConfig.phone}</span>
                   </a>
                   <a
-                    href="mailto:Sales@barbariansignsinc.com"
+                    href={`mailto:${siteConfig.email}`}
                     className="flex items-center gap-3 text-off-white hover:text-gold transition-colors group"
                   >
                     <div className="w-10 h-10 rounded-lg bg-dark border border-dark-border flex items-center justify-center group-hover:border-gold/50 transition-colors">
@@ -272,7 +273,7 @@ export default function Contact() {
                       </svg>
                     </div>
                     <span className="font-medium">
-                      Sales@barbariansignsinc.com
+                      {siteConfig.email}
                     </span>
                   </a>
                 </div>
@@ -305,10 +306,9 @@ export default function Contact() {
                     </svg>
                   </div>
                   <div>
-                    <p className="font-medium">Greater Los Angeles Area</p>
+                    <p className="font-medium">{siteConfig.contact.serviceArea.title}</p>
                     <p className="text-muted text-sm mt-1">
-                      Serving LA, the San Fernando Valley, and surrounding
-                      communities since 1985.
+                      {siteConfig.contact.serviceArea.description}
                     </p>
                   </div>
                 </div>
@@ -319,62 +319,22 @@ export default function Contact() {
                   Why request a quote?
                 </p>
                 <ul className="space-y-2 text-muted text-sm">
-                  <li className="flex items-center gap-2">
-                    <svg
-                      className="w-4 h-4 text-gold flex-shrink-0"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    100% free, no obligation
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <svg
-                      className="w-4 h-4 text-gold flex-shrink-0"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    Response within 24 hours
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <svg
-                      className="w-4 h-4 text-gold flex-shrink-0"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    On-site consultations available
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <svg
-                      className="w-4 h-4 text-gold flex-shrink-0"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    Transparent, detailed pricing
-                  </li>
+                  {siteConfig.contact.quoteReasons.map((reason) => (
+                    <li key={reason} className="flex items-center gap-2">
+                      <svg
+                        className="w-4 h-4 text-gold flex-shrink-0"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                      {reason}
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>

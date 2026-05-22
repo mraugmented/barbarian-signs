@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { siteConfig } from "@/config/site";
 
 export default function Hero() {
   return (
@@ -10,7 +11,7 @@ export default function Hero() {
       <div className="absolute inset-0">
         <Image
           src="/portfolio/channel-letters-install.jpg"
-          alt="Barbarian Signs team installing channel letters"
+          alt={siteConfig.hero.backgroundAlt}
           fill
           className="object-cover"
           priority
@@ -28,7 +29,7 @@ export default function Hero() {
         >
           <Image
             src="/logo.png"
-            alt="Barbarian Signs - Since 1985"
+            alt={siteConfig.hero.logoAlt}
             width={400}
             height={200}
             className="mx-auto mb-8 w-64 sm:w-80 md:w-96 h-auto"
@@ -46,7 +47,7 @@ export default function Hero() {
           }}
           className="text-lg sm:text-xl md:text-2xl text-off-white/90 mb-10 max-w-2xl mx-auto font-light tracking-wide"
         >
-          Specializing in customized signs for over 40 years.
+          {siteConfig.tagline}
         </motion.p>
 
         <motion.div
@@ -63,10 +64,10 @@ export default function Hero() {
             href="#contact"
             className="bg-gold hover:bg-gold-dark text-dark font-bold text-lg px-8 py-4 rounded-lg cursor-pointer transition-all duration-200 hover:shadow-lg hover:shadow-gold/20"
           >
-            Get a Free Quote
+            {siteConfig.hero.ctaPrimary}
           </a>
           <a
-            href="tel:+17252592130"
+            href={siteConfig.phoneHref}
             className="flex items-center gap-2 text-white hover:text-gold transition-colors duration-200 text-lg"
           >
             <svg
@@ -82,7 +83,7 @@ export default function Hero() {
                 d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
               />
             </svg>
-            (725) 259-2130
+            {siteConfig.phone}
           </a>
         </motion.div>
       </div>

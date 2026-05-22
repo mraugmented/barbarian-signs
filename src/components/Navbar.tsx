@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { siteConfig } from "@/config/site";
 
 const navLinks = [
   { label: "Services", href: "#services" },
@@ -35,7 +36,7 @@ export default function Navbar() {
           <a href="#" className="flex-shrink-0">
             <Image
               src="/logo.png"
-              alt="Barbarian Signs"
+              alt={siteConfig.businessName}
               width={160}
               height={60}
               className="h-12 w-auto"
@@ -55,16 +56,16 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="tel:+17252592130"
+              href={siteConfig.phoneHref}
               className="text-sm font-semibold text-gold hover:text-gold-light transition-colors duration-200"
             >
-              (725) 259-2130
+              {siteConfig.phone}
             </a>
             <a
               href="#contact"
               className="bg-gold hover:bg-gold-dark text-dark font-semibold text-sm px-5 py-2.5 rounded transition-colors duration-200"
             >
-              Free Quote
+              {siteConfig.hero.ctaSecondary}
             </a>
           </div>
 
@@ -121,17 +122,17 @@ export default function Navbar() {
                 </a>
               ))}
               <a
-                href="tel:+17252592130"
+                href={siteConfig.phoneHref}
                 className="block text-gold font-semibold py-2"
               >
-                (725) 259-2130
+                {siteConfig.phone}
               </a>
               <a
                 href="#contact"
                 onClick={() => setMobileOpen(false)}
                 className="block bg-gold hover:bg-gold-dark text-dark font-semibold text-center px-5 py-3 rounded transition-colors duration-200"
               >
-                Free Quote
+                {siteConfig.hero.ctaSecondary}
               </a>
             </div>
           </motion.div>

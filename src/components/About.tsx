@@ -2,12 +2,7 @@
 
 import Image from "next/image";
 import FadeIn from "./FadeIn";
-
-const stats = [
-  { value: "40+", label: "Years in Business" },
-  { value: "1,000+", label: "Signs Installed" },
-  { value: "100%", label: "Custom Built" },
-];
+import { siteConfig } from "@/config/site";
 
 export default function About() {
   return (
@@ -20,7 +15,7 @@ export default function About() {
               <div className="relative overflow-hidden rounded-lg aspect-[4/3]">
                 <Image
                   src="/portfolio/sign-truck.jpg"
-                  alt="Barbarian Signs work truck loaded with custom channel letters ready for installation"
+                  alt={siteConfig.about.imageAlt}
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -35,40 +30,23 @@ export default function About() {
           <div>
             <FadeIn direction="right">
               <p className="text-gold text-sm font-semibold uppercase tracking-[0.2em] mb-3">
-                About Us
+                {siteConfig.about.sectionLabel}
               </p>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
-                <span className="text-gold">40+ Years</span> of Craftsmanship
+                <span className="text-gold">{siteConfig.about.heading}</span>{" "}
+                {siteConfig.about.headingSuffix}
               </h2>
               <div className="space-y-4 text-off-white/80 leading-relaxed">
-                <p>
-                  Since 1985, Barbarian Signs has been a cornerstone of the Los
-                  Angeles sign industry. What started as a small, family-owned
-                  shop has grown into one of LA&apos;s most trusted sign
-                  companies &mdash; but we&apos;ve never lost the hands-on
-                  approach that got us here.
-                </p>
-                <p>
-                  Every sign we build is custom-fabricated by our experienced
-                  team. From the initial design consultation to the final
-                  installation, we handle every step in-house. No outsourcing, no
-                  shortcuts.
-                </p>
-                <p>
-                  We&apos;ve had the privilege of working with major national
-                  brands like Westfield and Cold Stone Creamery, as well as
-                  hundreds of local businesses across the greater Los Angeles
-                  area. Whether it&apos;s a towering pole sign or elegant channel
-                  letters, we bring the same level of precision and care to every
-                  project.
-                </p>
+                {siteConfig.about.paragraphs.map((paragraph, index) => (
+                  <p key={index}>{paragraph}</p>
+                ))}
               </div>
             </FadeIn>
 
             {/* Stats */}
             <FadeIn direction="right" delay={0.2}>
               <div className="grid grid-cols-3 gap-6 mt-10 pt-10 border-t border-dark-border">
-                {stats.map((stat) => (
+                {siteConfig.about.stats.map((stat) => (
                   <div key={stat.label} className="text-center">
                     <div className="text-3xl sm:text-4xl font-bold text-gold mb-1">
                       {stat.value}

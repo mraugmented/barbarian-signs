@@ -2,45 +2,7 @@
 
 import Image from "next/image";
 import FadeIn from "./FadeIn";
-
-const projects = [
-  {
-    src: "/portfolio/westfield-mall.jpg",
-    alt: "Westfield Mall illuminated channel letter signage",
-    client: "Westfield Mall",
-    type: "Channel Letters",
-  },
-  {
-    src: "/portfolio/cold-stone-creamery.png",
-    alt: "Cold Stone Creamery illuminated storefront sign",
-    client: "Cold Stone Creamery",
-    type: "Illuminated Sign",
-  },
-  {
-    src: "/portfolio/yume-nail-lounge.png",
-    alt: "Yume Nail Lounge illuminated lightbox sign",
-    client: "Yumé Nail Lounge",
-    type: "Lightbox Sign",
-  },
-  {
-    src: "/portfolio/lees-coffee-house.png",
-    alt: "Lee's Coffee House dimensional letter signage",
-    client: "Lee\u2019s Coffee House",
-    type: "Dimensional Letters",
-  },
-  {
-    src: "/portfolio/sunland-produce.png",
-    alt: "Sunland Produce illuminated pole sign",
-    client: "Sunland Produce",
-    type: "Pole Sign",
-  },
-  {
-    src: "/portfolio/fox-auto-body.jpg",
-    alt: "Fox Auto Body pole sign installation",
-    client: "Fox Auto Body",
-    type: "Pole Sign",
-  },
-];
+import { siteConfig } from "@/config/site";
 
 export default function Portfolio() {
   return (
@@ -49,20 +11,19 @@ export default function Portfolio() {
         <FadeIn>
           <div className="text-center mb-16">
             <p className="text-gold text-sm font-semibold uppercase tracking-[0.2em] mb-3">
-              Portfolio
+              {siteConfig.portfolio.sectionLabel}
             </p>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-              Our Work Speaks for Itself
+              {siteConfig.portfolio.heading}
             </h2>
             <p className="text-muted max-w-xl mx-auto text-lg">
-              Trusted by national brands and neighborhood favorites across Los
-              Angeles.
+              {siteConfig.portfolio.subheading}
             </p>
           </div>
         </FadeIn>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {projects.map((project, index) => (
+          {siteConfig.portfolio.projects.map((project, index) => (
             <FadeIn key={index} delay={index * 0.08}>
               <div className="group relative overflow-hidden rounded-xl aspect-[3/4] cursor-pointer">
                 <Image

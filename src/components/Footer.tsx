@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { siteConfig } from "@/config/site";
 
 export default function Footer() {
   return (
@@ -8,31 +9,31 @@ export default function Footer() {
           <div className="flex flex-col items-center md:items-start gap-3">
             <Image
               src="/logo.png"
-              alt="Barbarian Signs"
+              alt={siteConfig.businessName}
               width={140}
               height={52}
               className="h-10 w-auto"
             />
             <p className="text-muted text-sm">
-              Custom signs for businesses across Los Angeles since 1985.
+              {siteConfig.footer.description}
             </p>
           </div>
 
           <div className="flex flex-col items-center md:items-end gap-2 text-sm text-muted">
             <a
-              href="tel:+17252592130"
+              href={siteConfig.phoneHref}
               className="hover:text-gold transition-colors"
             >
-              (725) 259-2130
+              {siteConfig.phone}
             </a>
             <a
-              href="mailto:Sales@barbariansignsinc.com"
+              href={`mailto:${siteConfig.email}`}
               className="hover:text-gold transition-colors"
             >
-              Sales@barbariansignsinc.com
+              {siteConfig.email}
             </a>
             <p className="mt-2">
-              &copy; {new Date().getFullYear()} Barbarian Signs Inc. All rights
+              &copy; {new Date().getFullYear()} {siteConfig.legalName} All rights
               reserved.
             </p>
           </div>
